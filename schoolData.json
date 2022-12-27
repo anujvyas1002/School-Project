@@ -1,0 +1,409 @@
+{
+  "users": [
+    {
+      "id": 1656939878672,
+      "firstName": "anuj",
+      "lastName": "uytr",
+      "contectNumber": "1234567890",
+      "role": "admin",
+      "password": "Anuj@123"
+    }
+  ],
+  "login": [
+    {
+      "id": 1656940077899,
+      "userName": "anujvy@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1657341983932,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1657343941697,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1657377264923,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1657432247106,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1657514604091,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1657548946036,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1661344445934,
+      "email": "anujvyas3407@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1663678574141,
+      "email": "anujvyas3407@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1663678629133,
+      "email": "anujvyas3407@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1665402677203,
+      "email": "amol@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1665403046101,
+      "email": "anujvyas3407@gmail.com",
+      "password": "anuj@123"
+    },
+    {
+      "id": 1665463559458,
+      "email": "anujvyas3407@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1668576284368,
+      "email": "vishalwandile50@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1668688835958,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1668770324119,
+      "email": "vishalwandile50@gmail.com",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1669281836366,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "Anuj@3"
+    },
+    {
+      "id": 1672119863558,
+      "email": "anuj.vyas@alliedvision.co.in",
+      "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672120196261,
+      "email": "anuj.vyas@alliedvision.co.in",
+      "password": "Anuj@123"
+    },
+    {
+      "id": 1672120274330,
+      "email": "anuj.vyas@alliedvision.co.in",
+      "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672121659867,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672122042571,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672122624808,
+      "email": "vishal.wandile@anka.co.in",
+      "password": "P@ssw0rd"
+    }
+  ],
+  "rolesData": [
+    {
+      "id": 1698260511019,
+      "role": "Developer",
+      "description": "i am Developer"
+    },
+    {
+      "id": 1657260509019,
+      "role": "Tester",
+      "description": "i am Tester"
+    },
+    {
+      "id": 1657544161455,
+      "role": "Admin",
+      "description": "i am admin"
+    },
+    {
+      "id": 1657548989442,
+      "role": "HR",
+      "description": "xyz"
+    },
+    {
+      "id": 1657549309798,
+      "role": "Manager",
+      "description": "xyz"
+    },
+    {
+      "id": 1657549341659,
+      "role": "ProjectManage",
+      "description": "xyz"
+    }
+  ],
+  "skillsData": [
+    {
+      "id": 1657258011848,
+      "skill": "NodeJS",
+      "description": "i am NodeJs developer"
+    },
+    {
+      "id": 1657259881848,
+      "skill": "Angular",
+      "description": "i am Angular developer"
+    },
+    {
+      "id": 1657259884548,
+      "skill": "React",
+      "description": "i am React developer"
+    },
+    {
+      "id": 1657250781848,
+      "skill": "Android",
+      "description": "i am Android developer"
+    },
+    {
+      "id": 1657342080362,
+      "skill": "pythan",
+      "description": "xyz"
+    },
+    {
+      "id": 1657343391602,
+      "skill": "Java",
+      "description": "xyz"
+    },
+    {
+      "id": 1657343488482,
+      "skill": "bootstrap",
+      "description": "xyz"
+    },
+    {
+      "id": 1668688969791,
+      "skill": "cpp",
+      "description": "i am cpp dev"
+    }
+  ],
+  "employees": [
+    {
+      "id": 1657453560959,
+      "firstName": "anuj",
+      "lastName": "vyas",
+      "dob": "2000/12/13",
+      "employee_about": "xyz",
+      "gender": "Male",
+      "role": {
+        "role": "Tester"
+      },
+      "skills": [
+        {
+          "id": 1657343488482,
+          "skill": "bootstrap",
+          "description": "xyz"
+        },
+        {
+          "id": 1657259884548,
+          "skill": "React",
+          "description": "i am React developer"
+        }
+      ]
+    },
+    {
+      "id": 1657546092193,
+      "firstName": "vishal",
+      "lastName": "vyas",
+      "dob": "2021/7/11",
+      "employee_about": "xyz",
+      "gender": "Female",
+      "role": {
+        "role": "Developer"
+      },
+      "skills": [
+        {
+          "id": 1657259881848,
+          "skill": "Angular",
+          "description": "i am Angular developer"
+        },
+        {
+          "id": 1657250781848,
+          "skill": "Android",
+          "description": "i am Android developer"
+        }
+      ]
+    },
+    {
+      "id": 1657614257360,
+      "firstName": "Anand",
+      "lastName": "vyas",
+      "dob": "2021/7/12",
+      "employee_about": "i am anand",
+      "gender": "Male",
+      "role": {
+        "role": "ProjectManager"
+      },
+      "skills": [
+        {
+          "id": 1657343391602,
+          "skill": "Java",
+          "description": "xyz"
+        },
+        {
+          "id": 1657258011848,
+          "skill": "NodeJS",
+          "description": "i am NodeJs developer"
+        }
+      ]
+    },
+    {
+      "id": 1661333464976,
+      "firstName": "anuj",
+      "lastName": "vyas",
+      "dob": "2021/8/24",
+      "employee_about": "i am anuj",
+      "gender": "Male",
+      "role": {
+        "role": "Developer"
+      },
+      "skills": [
+        {
+          "id": 1657259884548,
+          "skill": "React",
+          "description": "i am React developer"
+        },
+        {
+          "id": 1657259881848,
+          "skill": "Angular",
+          "description": "i am Angular developer"
+        },
+        {
+          "id": 1657258011848,
+          "skill": "NodeJS",
+          "description": "i am NodeJs developer"
+        },
+        {
+          "id": 1657343488482,
+          "skill": "bootstrap",
+          "description": "xyz"
+        }
+      ]
+    },
+    {
+      "id": 1661333500484,
+      "firstName": "anuj",
+      "lastName": "vyas",
+      "dob": "2021/8/24",
+      "employee_about": "xyz",
+      "gender": "Male",
+      "role": {
+        "role": "Developer"
+      },
+      "skills": [
+        {
+          "id": 1657258011848,
+          "skill": "NodeJS",
+          "description": "i am NodeJs developer"
+        },
+        {
+          "id": 1657259881848,
+          "skill": "Angular",
+          "description": "i am Angular developer"
+        },
+        {
+          "id": 1657259884548,
+          "skill": "React",
+          "description": "i am React developer"
+        },
+        {
+          "id": 1657343488482,
+          "skill": "bootstrap",
+          "description": "xyz"
+        }
+      ]
+    },
+    {
+      "id": 1668688913031,
+      "firstName": "shubhamm",
+      "lastName": "xda",
+      "dob": "2021/11/17",
+      "employee_about": "xssdsd",
+      "gender": "Male",
+      "role": {
+        "role": "Admin"
+      },
+      "skills": [
+        {
+          "id": 1657258011848,
+          "skill": "NodeJS",
+          "description": "i am NodeJs developer"
+        },
+        {
+          "id": 1657250781848,
+          "skill": "Android",
+          "description": "i am Android developer"
+        }
+      ]
+    },
+    {
+      "id": 1668753896917,
+      "firstName": "rutuja",
+      "lastName": "xyz",
+      "dob": "2000/11/12",
+      "employee_about": "xyzz",
+      "gender": "Female",
+      "role": {
+        "role": "Admin"
+      },
+      "skills": [
+        {
+          "id": 1657259884548,
+          "skill": "React",
+          "description": "i am React developer"
+        },
+        {
+          "id": 1657342080362,
+          "skill": "pythan",
+          "description": "xyz"
+        }
+      ]
+    }
+  ],
+  "roles": [
+    {
+      "id": 1657184794835,
+      "role": {
+        "role": "Developer"
+      },
+      "description": "i am developer"
+    },
+    {
+      "id": 1657184885926,
+      "role": {
+        "role": "Manager"
+      },
+      "description": "i am manager"
+    },
+    {
+      "id": 1657199947396,
+      "role": {
+        "role": "Developer"
+      },
+      "description": "i dev"
+    }
+  ]
+}
