@@ -21,8 +21,6 @@ export const SchoolLayout = () => {
           { label: "Class", path: "/manageClasses" },
           { label: "Teacher", path: "/manageTeachers" },
           { label: "Student", path: "/manageStudents" },
-          { label: "Skills", path: "/manageSkills" },
-          { label: "Roles", path: "/manageRoles" },
         ]}
       /> */}
       <Navbar/>

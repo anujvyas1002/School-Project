@@ -19,9 +19,7 @@ export const AuthProvider = ({ children }) => {
     { label: "DashBoard", path: "/dashboard" },
     { label: "Class", path: "/manageClasses" },
     { label: "Teacher", path: "/manageTeachers" },
-    { label: "Student", path: "/manageStudents" },
-    { label: "Skills", path: "/manageSkills" },
-    { label: "Roles", path: "/manageRoles" }
+    { label: "Student", path: "/manageStudents" }
   ];
     localStorage.setItem('menu',JSON.stringify(menuItems));
     localStorage.setItem('role','Admin');

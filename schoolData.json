@@ -24,6 +24,21 @@
       "id": 1672289858792,
       "email": "anujvyas3407@gmail.com",
       "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672293263850,
+      "email": "anujvyas3407@gmail.com",
+      "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672293463366,
+      "email": "student@gmail.com",
+      "password": "P@ssw0rd"
+    },
+    {
+      "id": 1672293481698,
+      "email": "teacher@gmail.com",
+      "password": "P@ssw0rd"
     }
   ],
   "classes": [

@@ -9,8 +9,6 @@ import { HomeLayout } from "./components/HomeLayout";
 import { SchoolLayout } from "./components/SchoolLayout";
 import { StudentTable } from "./pages/ManageStudents/StudentTable";
 import { NotFound } from "./components/NotFound";
-import { SkillTable } from "./pages/ManageSkills/SkillTable";
-import { RolesTable } from "./pages/ManageRoles/RolesTable";
 import Main from "./pages/dashboard/Main";
 import { TeacherTable } from "./pages/ManageTeachers/TeacherTable";
 import { ClassTable } from "./pages/ManageClasses/ClassTable";
@@ -29,8 +27,6 @@ function App() {
           <Route path="/manageTeachers" index element={<TeacherTable/>}/>
             <Route path="/manageClasses" index element={<ClassTable/>}/>
             <Route path="/manageStudents" index element={<StudentTable />} />
-            <Route path="/manageSkills" element={<SkillTable />} />
-            <Route path="/manageRoles" element={<RolesTable />} />
             <Route path="/dashboard" element={<Main />} />
           </Route>
           <Route path="/*" element={<NotFound />} />
