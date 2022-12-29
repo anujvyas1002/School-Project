@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchEmployees, STATUSES, skillsData, rolesData } from "../../store/manageEmployeesSlice";
+import { fetchClasses, STATUSES } from "../../store/manageClassesSlice";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { styled } from "@mui/material/styles";
@@ -20,9 +20,10 @@ import {
   Grid,
   Button
 } from "@mui/material";
-import { AddEmployee } from "./AddEmployee";
-import { UpdateEmployee } from "./UpdateEmployee";
-import RemoveEmployee from "./RemoveEmployee";
+
+import { AddClass } from "./AddClass";
+import { UpdateClass } from "./UpdateClass";
+import RemoveClass from "./RemoveClass";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -31,45 +32,50 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const EmployeeTable = () => {
+export const ClassTable = () => {
   // handle for pagination data
   const [page, setPage] = useState(0);
 
-  //state for open add employee  Dialog
+  //state for open add Class  Dialog
   const [isAdd, setAdd] = useState(false);
 
-  //state for open remove employee ConfirmBox
+  //state for open remove Class ConfirmBox
   const [isRemove, setRemove] = useState(false);
 
-  //state for open edit Employee  Dialog
+  //state for open edit Class  Dialog
   const [isEdit, setEdit] = useState(false);
 
-  //employee data
-  const [employee, setEmployee] = useState([]);
+  //Class data
+  const [cls, setCls] = useState([]);
 
   // handle for tables rows
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  // edit button hide show button
+  const [show, setShow] = useState(false);
 
-  
+
   
   const dispatch = useDispatch();
-  const { employees, status } = useSelector((state) => state.manageEmployees);
+  const { classes, status } = useSelector((state) => state.manageClasses);
 
   useEffect(() => {
-    dispatch(fetchEmployees());
-    dispatch(rolesData());
-    dispatch(skillsData());
-    
-    
+    dispatch(fetchClasses());
+    let roleName = localStorage.getItem('role');
+    if(roleName === "Admin"){
+      setShow(true);
+    }
+    else{
+      setShow(false);
+    }
   }, []);
 
-  //on click of add employee
+  //on click of add Class
   const openAddForm = () => {
     setAdd(true);
   };
 
-  //close add new Employee  Dialog
+  //close add new Class  Dialog
   const onCloseForm = () => {
     setAdd(false);
   };
@@ -77,19 +83,19 @@ export const EmployeeTable = () => {
   //refresh table after save
   const onSaveUpdateTable = () => {
     setAdd(false);
-    dispatch(fetchEmployees());
+    dispatch(fetchClasses());
   };
 
   //after edit refresh table
   const onEditUpdateTable = () => {
     setEdit(false);
-    dispatch(fetchEmployees());
+    dispatch(fetchClasses());
   };
 
-  //on click of remove employee ConfirmBox open
-  const openConfirmBox = (employee) => {
+  //on click of remove Class ConfirmBox open
+  const openConfirmBox = (cls) => {
     setRemove(true);
-    setEmployee(employee);
+    setCls(cls);
   };
 
   //close ConfirmBox
@@ -97,15 +103,15 @@ export const EmployeeTable = () => {
     setRemove(false);
   };
 
-  //refresh table after Remove Employee
-  const onRemoveEmployee = () => {
+  //refresh table after Remove Class
+  const onRemoveClass = () => {
     setRemove(false);
-    dispatch(fetchEmployees());
+    dispatch(fetchClasses());
   };
 
-  //on click of edit Employee
-  const openEditForm = (employee) => {
-    setEmployee(employee);
+  //on click of edit Class
+  const openEditForm = (cls) => {
+    setCls(cls);
     setEdit(true);
   };
 
@@ -125,15 +131,7 @@ export const EmployeeTable = () => {
     setPage(0);
   };
 
-  // date format
-  function formatDate(timestamp) {
-    const x = new Date(timestamp);
-    const DD = x.getDate();
-    const MM = x.getMonth() + 1;
-    const YYYY = x.getFullYear();
-    return DD + "/" + MM + "/" + YYYY;
-  }
-
+  
   if (status === STATUSES.LOADING) {
     return <h2>Loading....</h2>;
   }
@@ -142,25 +140,27 @@ export const EmployeeTable = () => {
     return <h2>Something went wrong!</h2>;
   }
 
+
   return (
     <>
       <div>
-          
         <Grid
           container
           direction="row"
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Button
+         
+          {show?  <Button
             sx={{ mt: "10px" }}
             variant="contained"
             onClick={openAddForm}
             color="primary"
-            data-testid="addEmployeeBtn"
+            data-testid="addClassBtn"
           >
-            Add Employee
-          </Button>
+            Add Class
+          </Button>:null}
+         
         </Grid>
 
         <BootstrapDialog
@@ -168,21 +168,21 @@ export const EmployeeTable = () => {
           aria-labelledby="customized-dialog-title"
           open={isAdd}
         >
-          <AddEmployee
+          <AddClass
             onSaveUpdateTable={onSaveUpdateTable}
             onClose={onCloseForm}
-          ></AddEmployee>
+          ></AddClass>
         </BootstrapDialog>
         <BootstrapDialog
           onClose={onCloseEdit}
           aria-labelledby="customized-dialog-title"
           open={isEdit}
         >
-          <UpdateEmployee
+          <UpdateClass
             onEditUpdateTable={onEditUpdateTable}
             onClose={onCloseEdit}
-            employee={employee}
-          ></UpdateEmployee>
+            class={cls}
+          ></UpdateClass>
         </BootstrapDialog>
 
         <Dialog
@@ -191,11 +191,11 @@ export const EmployeeTable = () => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <RemoveEmployee
-            onRemoveEmployee={onRemoveEmployee}
+          <RemoveClass
+            onRemoveClass={onRemoveClass}
             onClose={onCloseConfirmBox}
-            employee={employee}
-          ></RemoveEmployee>
+            class={cls}
+          ></RemoveClass>
         </Dialog>
 
         <hr />
@@ -210,50 +210,39 @@ export const EmployeeTable = () => {
             >
               <TableHead>
                 <TableRow>
-                  <TableCell>First Name</TableCell>
-                  <TableCell>Last Name</TableCell>
-                  <TableCell>DOB</TableCell>
-                  <TableCell>Gender</TableCell>
-                  <TableCell>Role</TableCell>
-                  <TableCell>Skills</TableCell>
-                  <TableCell> About</TableCell>
-                  <TableCell>Actions</TableCell>
+                  <TableCell>Class Teacher</TableCell>
+                  <TableCell>Total Student</TableCell>
+                  <TableCell>Class Name</TableCell>
+                  <TableCell> Room Number</TableCell>
+                  {show ? <TableCell>Actions</TableCell>
+                    : null}
                 </TableRow>
               </TableHead>
               <TableBody>
-                {employees
+                {classes
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((employee) => (
+                  .map((cls) => (
                     <TableRow
-                      key={employee.id}
+                      key={cls.id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
-                      <TableCell>{employee.firstName}</TableCell>
-                      <TableCell>{employee.lastName}</TableCell>
-                      <TableCell>{formatDate(employee.dob)}</TableCell>
-                      <TableCell>{employee.gender}</TableCell>
-                      <TableCell>{employee.role.role}</TableCell>
-                      <TableCell>
-                        {employee.skills.map((skill, index) => (
-                          <div key={index}>{skill.skill}</div>
-                        ))}
-                      </TableCell>
-                      <TableCell>{employee.employee_about}</TableCell>
-                      <TableCell>
-                        {/* <IconButton color="primary"> */}
-                        {/* <EditIcon /> */}
-
+                      <TableCell>{cls.classTeacher} </TableCell>
+                      <TableCell>{cls.totalStudent} </TableCell>
+                      <TableCell>{cls.className} th</TableCell>
+                      <TableCell>{cls.roomNumber}</TableCell>
+                     { show ? <TableCell>
                         <Fab size="small" color="secondary" aria-label="edit">
-                          <EditIcon onClick={() => openEditForm(employee)} />
+                          <EditIcon onClick={() => openEditForm(cls)} />
                         </Fab>
                         {/* </IconButton> */}
 
                         <Fab size="small" color="error" aria-label="remove">
                           <DeleteIcon
-                            onClick={() => openConfirmBox(employee)}
+                            onClick={() => openConfirmBox(cls)}
                           />
                         </Fab>
-                      </TableCell>
+                      </TableCell> : null
+                      }
                     </TableRow>
                   ))}
               </TableBody>
@@ -263,7 +252,7 @@ export const EmployeeTable = () => {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={employees.length}
+            count={classes.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

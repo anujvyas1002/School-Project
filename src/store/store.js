@@ -1,16 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authenticationReducer from "./authenticationSlice";
-import manageEmployeesReducer from "./manageEmployeesSlice";
-
+import manageStudentsReducer from "./manageStudentsSlice";
 import manageRolesReducer from "./manageRolesSlice";
 import manageSkillsReducer from "./manageSkillsSlice";
+import manageTeachersReducer from "./manageTeachersSlice";
+import manageClassesReducer from "./manageClassesSlice";
 
 const store = configureStore({
   reducer: {
     authentication: authenticationReducer,
-    manageEmployees: manageEmployeesReducer,
+    manageStudents: manageStudentsReducer,
+    manageClasses: manageClassesReducer,
     manageRoles: manageRolesReducer,
     manageSkills: manageSkillsReducer,
+    manageTeachers : manageTeachersReducer
   },
 });
 

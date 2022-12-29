@@ -1,19 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Button,
   TextField,
   Grid,
   MenuItem,
-  IconButton,
-  OutlinedInput,
-  InputAdornment,
   Box,
   Card,
   CardContent,
 } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useForm } from "react-hook-form";
 import {
   registrationEmployee,
@@ -30,26 +25,6 @@ export const Registration = () => {
   } = useForm({
     mode: "onTouched",
   });
-
-  // password value show & hide
-  const [values, setValues] = useState({ password: "" });
-
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  // click icon password value show
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  // click icon password value Hide
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
 
   const password = useRef({});
   password.current = watch("password", "");
@@ -229,7 +204,7 @@ export const Registration = () => {
                 <Grid container sx={{ mt: "0.5px" }} spacing={2}>
                   <Grid item xs={6}>
                     <div className="form-group">
-                      <OutlinedInput
+                      {/* <OutlinedInput
                         className="form-control"
                         type={values.showPassword ? "text" : "password"}
                         onChange={handleChange("password")}
@@ -253,6 +228,31 @@ export const Registration = () => {
                             </IconButton>
                           </InputAdornment>
                         }
+                        {...register("password", {
+                          required: "password is Required",
+                          pattern: {
+                            value:
+                              /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                            message: "password is invaild",
+                          },
+                          minLength: {
+                            value: 6,
+                            message: "Enter your Minimum 6 characters",
+                          },
+                          maxLength: {
+                            value: 16,
+                            message: "Enter your Maximum 16 characters",
+                          },
+                        })}
+                      /> */}
+                      <TextField
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
                         {...register("password", {
                           required: "password is Required",
                           pattern: {
@@ -318,8 +318,8 @@ export const Registration = () => {
                         label="-- Select Your Role---"
                         {...register("role", { required: "Role is Required" })}
                       >
-                        <MenuItem value="admin">Admin</MenuItem>
-                        <MenuItem value="user">User</MenuItem>
+                        <MenuItem value="student">student</MenuItem>
+                        <MenuItem value="teacher">teacher</MenuItem>
                       </TextField>
 
                       {errors.role && (
@@ -344,7 +344,7 @@ export const Registration = () => {
 
                 <Grid container sx={{ mt: "40px" }}>
                   <Grid>
-                    <RouterLink to="/login">
+                    <RouterLink to="/">
                       {"Already have an account? click me"}
                     </RouterLink>
                   </Grid>

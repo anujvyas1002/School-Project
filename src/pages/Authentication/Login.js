@@ -1,12 +1,9 @@
-import React, { useRef,useState } from "react";
+import React, { useRef } from "react";
 import { loginEmployee, STATUSES } from "../../store/authenticationSlice";
 import {
   Button,
   TextField,
   Grid,
-  IconButton,
-  OutlinedInput,
-  InputAdornment,
   Box,
   Card,
   CardContent,
@@ -15,8 +12,6 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export const Login = () => {
   const { login } = useAuth();
@@ -30,26 +25,11 @@ export const Login = () => {
     mode: "onTouched",
   });
 
-  // password value show & hide
-  const [values, setValues] = useState({ password: "" });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
 
-  // click icon password value show
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
 
-  
-  // click icon password value Hide
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+
+
 
   const password = useRef({});
   password.current = watch("password", "");
@@ -74,7 +54,7 @@ export const Login = () => {
       password: data.password,
     };
     login({
-      userName: data.userName,
+      userName: data.email,
       password: data.password,
     });
     dispatch(loginEmployee(req));
@@ -126,7 +106,7 @@ export const Login = () => {
                 <Grid container sx={{ mt: "10px" }}>
                   <Grid item xs={12}>
                     <div className="form-group">
-                      <OutlinedInput
+                      {/* <OutlinedInput
                         type={values.showPassword ? "text" : "password"}
                         onChange={handleChange("password")}
                         fullWidth
@@ -150,6 +130,24 @@ export const Login = () => {
                             </IconButton>
                           </InputAdornment>
                         }
+                        {...register("password", {
+                          required: "password is Required",
+                          pattern: {
+                            value:
+                              /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+                            message: "password is invaild",
+                          },
+                        })}
+                      /> */}
+
+                      <TextField
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        autoComplete="current-password"
                         {...register("password", {
                           required: "password is Required",
                           pattern: {

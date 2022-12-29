@@ -6,16 +6,16 @@ import {
   DialogContentText,
   Button,
 } from "@mui/material";
-import { removeEmployee, STATUSES } from "../../store/manageEmployeesSlice";
+import { removeStudent, STATUSES } from "../../store/manageStudentsSlice";
 
-const RemoveEmployee = (props) => {
+const RemoveStudent = (props) => {
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.manageEmployees);
+  const { status } = useSelector((state) => state.manageStudents);
 
-  // Delete Employee Delete Api Call
-  const deleteEmployee = (id) => {
-    dispatch(removeEmployee(id));
-    props.onRemoveEmployee();
+  // Delete student Delete Api Call
+  const deleteStudent = (id) => {
+    dispatch(removeStudent(id));
+    props.onRemoveStudent();
   };
 
   if (status === STATUSES.LOADING) {
@@ -38,7 +38,7 @@ const RemoveEmployee = (props) => {
         <DialogContentText id="alert-dialog-description">
           Are you sure want to delete{" "}
           <b>
-            {props.employee.firstName} {props.employee.lastName} ?
+            {props.student.firstName} {props.student.lastName} ?
           </b>
         </DialogContentText>
       </DialogContent>
@@ -47,7 +47,7 @@ const RemoveEmployee = (props) => {
         <Button
           variant="contained"
           color="primary"
-          onClick={()=>deleteEmployee(props.employee.id)}
+          onClick={()=>deleteStudent(props.student.id)}
           autoFocus
         >
           Ok
@@ -57,4 +57,4 @@ const RemoveEmployee = (props) => {
   );
 };
 
-export default RemoveEmployee;
+export default RemoveStudent;

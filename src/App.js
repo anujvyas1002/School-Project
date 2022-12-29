@@ -6,12 +6,14 @@ import store from "./store/store";
 import { Login } from "./pages/Authentication/Login";
 import { Registration } from "./pages/Authentication/Registration";
 import { HomeLayout } from "./components/HomeLayout";
-import { EmployeesLayout } from "./components/EmployeesLayout";
-import { EmployeeTable } from "./pages/ManageEmployees/EmployeeTable";
-import { Home } from "./pages/DashBoard/Home";
+import { SchoolLayout } from "./components/SchoolLayout";
+import { StudentTable } from "./pages/ManageStudents/StudentTable";
 import { NotFound } from "./components/NotFound";
 import { SkillTable } from "./pages/ManageSkills/SkillTable";
 import { RolesTable } from "./pages/ManageRoles/RolesTable";
+import Main from "./pages/dashboard/Main";
+import { TeacherTable } from "./pages/ManageTeachers/TeacherTable";
+import { ClassTable } from "./pages/ManageClasses/ClassTable";
 
 function App() {
   return (
@@ -19,15 +21,17 @@ function App() {
       <Provider store={store}>
         <Routes>
           <Route element={<HomeLayout />}>
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
           </Route>
 
-          <Route element={<EmployeesLayout />}>
-            <Route path="/manageEmployees" index element={<EmployeeTable />} />
+          <Route element={<SchoolLayout />}>
+          <Route path="/manageTeachers" index element={<TeacherTable/>}/>
+            <Route path="/manageClasses" index element={<ClassTable/>}/>
+            <Route path="/manageStudents" index element={<StudentTable />} />
             <Route path="/manageSkills" element={<SkillTable />} />
             <Route path="/manageRoles" element={<RolesTable />} />
-            <Route path="/dashboard" element={<Home />} />
+            <Route path="/dashboard" element={<Main />} />
           </Route>
           <Route path="/*" element={<NotFound />} />
         </Routes>

@@ -7,7 +7,7 @@ export const HomeLayout = () => {
   const outlet = useOutlet();
 
   if (user) {
-    return <Navigate to="/manageEmployees" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return (

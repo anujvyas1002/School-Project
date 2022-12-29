@@ -5,7 +5,6 @@ import {
   Button,
   DialogContent,
   DialogTitle,
-  NativeSelect,
   Stack,
   IconButton,
   TextField,
@@ -16,7 +15,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import { useDispatch, useSelector } from "react-redux";
-import { addEmployee, STATUSES } from "../../store/manageEmployeesSlice";
+import { addStudent, STATUSES } from "../../store/manageStudentsSlice";
 
 const BootstrapDialogTitle = (props) => {
   const { children, onClose, ...other } = props;
@@ -45,7 +44,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export const AddEmployee = (props) => {
+export const AddStudent = (props) => {
   const {
     register,
     handleSubmit,
@@ -54,15 +53,12 @@ export const AddEmployee = (props) => {
     mode: "onTouched",
   });
 
-  // selected Skill mantain state
-  const [selectedSkills, setSelectedSkills] = useState([]);
-
   // SelectedDate mantain
   const [selectedDate, setSelectedDate] = useState();
 
   const dispatch = useDispatch();
-  const { skills, roles, status } = useSelector(
-    (state) => state.manageEmployees
+  const {  status } = useSelector(
+    (state) => state.manageStudents
   );
 
   if (status === STATUSES.LOADING) {
@@ -91,13 +87,12 @@ export const AddEmployee = (props) => {
       id: Date.now(),
       firstName: data.firstName,
       lastName: data.lastName,
+      className:data.className,
       dob: formatDate(selectedDate),
-      employee_about: data.employee_about,
+      student_about: data.student_about,
       gender: data.gender,
-      role: { role: data.role },
-      skills: selectedSkills,
     };
-    dispatch(addEmployee(req));
+    dispatch(addStudent(req));
     props.onSaveUpdateTable();
   };
 
@@ -106,17 +101,7 @@ export const AddEmployee = (props) => {
     props.onClose();
   };
 
-  // Skillls Input filed condition
-  function skillCheck(skill) {
-    let newSkills = [...selectedSkills];
-    let index = selectedSkills.findIndex((o) => o.id === skill.id);
-    if (index === -1) {
-      newSkills.push(skill);
-    } else {
-      newSkills.splice(index, 1);
-    }
-    setSelectedSkills(newSkills);
-  }
+ 
 
   return (
     <div>
@@ -224,18 +209,18 @@ export const AddEmployee = (props) => {
 
           <Grid container spacing={1}>
             <Grid item xs={6}>
-              <label htmlFor="employee_about">Employee About</label>
+              <label htmlFor="student_about">Student About</label>
               <div className="form-group">
                 <TextField
                   type="text"
                   className="form-control"
-                  id="employee_about"
+                  id="student_about"
                   multiline
                   rows={1}
                   maxRows={4}
-                  placeholder="Enter Your employee"
-                  {...register("employee_about", {
-                    required: "Employee About is Required",
+                  placeholder="Enter Your student"
+                  {...register("student_about", {
+                    required: "Student About is Required",
                     minLength: {
                       value: 3,
                       message: "Enter your Minimum 3 characters",
@@ -246,33 +231,39 @@ export const AddEmployee = (props) => {
                     },
                   })}
                 />
-                {errors.employee_about && (
+                {errors.student_about && (
                   <Grid container alignItems="flex-start">
                     <small style={{ color: "red" }}>
-                      {errors.employee_about.message}
+                      {errors.student_about.message}
                     </small>
                   </Grid>
                 )}
               </div>
             </Grid>
             <Grid item xs={6}>
-              <label htmlFor="role">Choose Your Roles</label>
+            <label htmlFor="className">Class Name</label>
               <div className="form-group">
-                <NativeSelect
+                <TextField
+                  type="number"
                   className="form-control"
-                  fullWidth
-                  id="role"
-                  {...register("role", { required: "Role is Required" })}
-                >
-                  {roles.map((role) => (
-                    <option key={role.id}>{role.role}</option>
-                  ))}
-                </NativeSelect>
-                {errors.role && (
+                  id="className"
+                  placeholder="Example- 1, 2"
+                  {...register("className", {
+                    required: "Class Name is Required",
+                    minLength: {
+                      value: 1,
+                      message: "Enter your Minimum 1 characters",
+                    },
+                    maxLength: {
+                      value: 2,
+                      message: "Enter your Maximum 2 characters",
+                    },
+                  })}
+                />
+                {errors.className && (
                   <Grid container alignItems="flex-start">
                     <small style={{ color: "red" }}>
-                      {" "}
-                      {errors.role.message}
+                      {errors.className.message}
                     </small>
                   </Grid>
                 )}
@@ -281,7 +272,7 @@ export const AddEmployee = (props) => {
           </Grid>
 
           <Grid container spacing={1}>
-            <Grid item xs={6}>
+            <Grid item >
               <label htmlFor="gender">Choose Your Gender</label>
               <div className="form-group">
                 <div className="form-check form-check-inline">
@@ -336,35 +327,6 @@ export const AddEmployee = (props) => {
                     </small>
                   </Grid>
                 )}
-              </div>
-            </Grid>
-            <Grid item xs={6}>
-              <label htmlFor="skills">Skills</label>
-              <div className="form-control">
-                {skills.map((skill) => (
-                  <div className="form-check" key={skill.id}>
-                    <input
-                      type="Checkbox"
-                      {...register("skills", { required: true })}
-                      id={skill.id}
-                      name="skills"
-                      value={skill}
-                      onChange={() => skillCheck(skill)}
-                    />
-                    <label className="form-check-label" htmlFor={skill.id}>
-                      {skill.skill}
-                    </label>
-                  </div>
-                ))}
-
-                {selectedSkills.length < 1 &&
-                  errors.skills?.type === "required" && (
-                    <Grid container alignItems="flex-start">
-                      <small style={{ color: "red" }}>
-                        Enter your Minimum 1 Skills
-                      </small>
-                    </Grid>
-                  )}
               </div>
             </Grid>
           </Grid>

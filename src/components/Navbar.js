@@ -21,6 +21,12 @@ export const Navbar = ({ pages }) => {
     }
   };
 
+  let menuItems = localStorage.getItem('menu');
+  let menu = JSON.parse(menuItems);
+
+  let roleName = localStorage.getItem('role');
+
+
   return (
     <MuiAppBar position="static">
       <Container maxWidth="xl">
@@ -31,7 +37,7 @@ export const Navbar = ({ pages }) => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            Admin Portal
+            {roleName?roleName:"School Project"} 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -63,7 +69,7 @@ export const Navbar = ({ pages }) => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages?.map((page) => (
+              {menu?.map((page) => (
                 <MenuItem
                   key={page.label}
                   onClick={() => handleCloseNavMenu(page.path)}
@@ -84,10 +90,10 @@ export const Navbar = ({ pages }) => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            Employees
+            {roleName?roleName:"School Project"} 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages?.map((page) => (
+            {menu?.map((page) => (
               <Grid key={page.label}>
                 <Button
                   onClick={() => handleCloseNavMenu(page.path)}
